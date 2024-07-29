@@ -80,32 +80,32 @@ export const ItemProvider = ({ children }) => {
       image: require('../resources/image/image 14-1.png')
     },
     {
-      id: 15,
+      id: 14-1,
       name: 'Duck 3',
       image: require('../resources/image/image 14.png')
     },
     {
-      id: 16,
+      id: 15,
       name: 'Duck 4',
       image: require('../resources/image/image 15.png')
     },
     {
-      id: 17,
+      id: 16,
       name: 'Pot 1',
       image: require('../resources/image/image 16.png')
     },
     {
-      id: 18,
+      id: 17,
       name: 'Pot 2',
       image: require('../resources/image/image 17.png')
     },
     {
-      id: 19,
+      id: 18,
       name: 'Pot 3',
       image: require('../resources/image/image 18.png')
     },
     {
-      id: 20,
+      id: 19,
       name: 'Pot 4',
       image: require('../resources/image/image 19.png')
     }

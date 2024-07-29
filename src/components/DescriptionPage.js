@@ -74,8 +74,8 @@ const Image = styled.img`
 
 const DescriptionPage = () => {
   const { id } = useParams();
-  const imageSrc = `/path/to/subimage${id}.jpg`; // Adjust this path according to your setup
-  const description = `This is the description for image ${id}.`; // Customize description as needed
+  const imageSrc = require(`../resources/image/image ${id}.png`); 
+  const description = `This is the description for image ${id}.`; 
 
   return (
     <DescriptionWrapper>
