@@ -15,7 +15,7 @@ import { ItemProvider } from './context/ItemContext';
 const App = () => {
   return (
     <ItemProvider>
-      <Router>
+      <Router basename='/b-planet'>
         <AuthProvider>
           <Routes>
             <Route path="/" element={<HomePage />} />
