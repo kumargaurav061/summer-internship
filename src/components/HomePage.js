@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
+// src/components/HomePage.js
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import Navbar from './Navbar';
 import { useItems } from '../context/ItemContext';
 import home1 from '../resources/image/Hero image 1.png';
 import home2 from '../resources/image/hero image 2.png';
-import defaultImage from '../resources/image/default-image.jpg'; // Ensure you have this image
 
 const para = {
   fontSize: '50px',
@@ -72,29 +72,21 @@ const PageLink = styled.button`
 
 const HomePage = () => {
   const { items } = useItems();
+  const defaultImage = require('../resources/image/default-image.jpg'); // Path to your default image
+
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 20;
 
-  // Create a total of 40 items initially, plus any additional items with default image
-  const totalItems = 40;
-  const additionalItemsCount = Math.max(totalItems - items.length, 0);
-  const additionalItems = new Array(additionalItemsCount).fill(0).map((_, index) => ({
-    id: items.length + index + 1,
-    name: `Product ${items.length + index + 1}`,
+  const allProducts = items.length > 0 ? items : new Array(100).fill(0).map((_, index) => ({
+    id: index + 1,
+    name: `Product ${index + 1}`,
     image: defaultImage,
   }));
 
-  // All items to be displayed
-  const allProducts = [...items, ...additionalItems];
-
-  // Check if we need to add more items with default image if there are more than 40
-  const extraItems = Math.max(allProducts.length - totalItems, 0);
-  const finalProducts = allProducts.slice(0, totalItems + extraItems);
-
-  const totalPages = Math.ceil(finalProducts.length / itemsPerPage);
+  const totalPages = Math.ceil(allProducts.length / itemsPerPage);
   const startIndex = (currentPage - 1) * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
-  const currentProducts = finalProducts.slice(startIndex, endIndex);
+  const currentProducts = allProducts.slice(startIndex, endIndex);
 
   const handlePreviousPage = () => {
     setCurrentPage(prevPage => Math.max(prevPage - 1, 1));
@@ -107,16 +99,16 @@ const HomePage = () => {
   return (
     <HomePageWrapper>
       <Navbar />
-        <TextImageContainer>
-          <TextSection>
-            <p style={para}>
-              "As Interesting <br />
-              as a Plant"
-            </p>
-          </TextSection>
-          <img src={home2} alt="User" />
-          <img src={home1} alt="User" />
-        </TextImageContainer>
+      <TextImageContainer>
+        <TextSection>
+          <p style={para}>
+            "As Interesting <br />
+            as a Plant"
+          </p>
+        </TextSection>
+        <img src={home2} alt="User" />
+        <img src={home1} alt="User" />
+      </TextImageContainer>
       <FeaturedProducts>
         <h2>Featured Product</h2>
         <ProductsGrid>
